@@ -7,11 +7,14 @@ TagManager:
   - Ground
   - Enemy
   - Top
+  - BottomWall
+  - UpperWall
+  - bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - enemy
   - Water
   - UI
   - Enemy
