@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class playermovement : MonoBehaviour
 {
+    public GameObject bullet;
+    public GameObject muzzle;
     public float speed = 5.0f;
     public GameManager gameManager;
-    public projectilebehavior ProjectilePrefab;
-    public Transform LaunchOffset;
+    
 
     // Update is called once per frame
     void Update()
@@ -17,9 +18,10 @@ public class playermovement : MonoBehaviour
         
         transform.Translate(xMovement, 0, 0);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(ProjectilePrefab, LaunchOffset.position, transform.rotation);
+            Instantiate(bullet, muzzle.transform).GetComponent<Rigidbody2D>
+                ().AddForce(muzzle.transform.position * -10, ForceMode2D.Impulse);
         }
         
     }

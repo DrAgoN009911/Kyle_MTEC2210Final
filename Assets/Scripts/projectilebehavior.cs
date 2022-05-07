@@ -4,17 +4,35 @@ using UnityEngine;
 
 public class projectilebehavior : MonoBehaviour
 {
-    public float Speed = 4.5f;
+    public float sceneradius = 15;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.up * Time.deltaTime * Speed;
+        if(transform.position.x < -sceneradius)
+        {
+            Destroy(gameObject);
+        }
+        if (transform.position.x > sceneradius)
+        {
+            Destroy(gameObject);
+        }
+        if (transform.position.y < -sceneradius)
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.x > sceneradius)
+        {
+            Destroy(gameObject);
+        }
+
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "enemy")
-        Destroy(gameObject);
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+      
+        }
+
     }
 
-}
+
