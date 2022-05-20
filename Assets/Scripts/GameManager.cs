@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class GameManager : MonoBehaviour
@@ -10,17 +11,40 @@ public class GameManager : MonoBehaviour
     public Transform[] spawnpoints;
     public SpriteRenderer spriteRenderer;
     public Color [] enemyColors;
+    private float timeRemaining;
+    public float spawnDelay;
+
+    public TextMeshPro timerText;
+    private Timer timer;
+    
+ 
+
 
     // Start is called before the first frame update
     void Start()
     {
+        timer = GetComponent<Timer>();
+        timeRemaining = spawnDelay;
         InvokeRepeating("spawnenemy", 3, 2);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (timer.timerIsRunning)
+        {
+            timerText.text = timer.GetTimeForDisplay();
+        }
+        if(timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+          
+            timeRemaining = spawnDelay;
+        }
+      
     }
 
 
