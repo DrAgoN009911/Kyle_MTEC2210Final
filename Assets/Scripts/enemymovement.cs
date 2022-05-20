@@ -23,10 +23,19 @@ public class enemymovement : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        else if(collision.gameObject.tag == "bullet")
+        else if (collision.gameObject.tag == "bullet")
         {
             Destroy(gameObject);
+
         }
     }
+        private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+            {
+                Destroy(gameObject);
+            }
+    }
 }
+
 
